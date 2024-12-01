@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-backend
+  template:
+    metadata:
+      labels:
+        app: node-backend
+    spec:
+      containers:
+      - name: mynodeapp
+        image: mynodeapp:latest
+        imagePullPolicy: Never  # Use local images
+        ports:
+        - containerPort: 3000
